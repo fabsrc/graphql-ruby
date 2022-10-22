@@ -24,6 +24,8 @@ Gem::Specification.new do |s|
 
   s.files = Dir["{lib}/**/*", "MIT-LICENSE", "readme.md", ".yardopts"]
 
+  s.add_dependency "rack", "~> 2.2.4"
+
   s.add_development_dependency "benchmark-ips"
   s.add_development_dependency "concurrent-ruby", "~>1.0"
   s.add_development_dependency "memory_profiler"

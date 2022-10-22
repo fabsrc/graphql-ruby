@@ -114,3 +114,5 @@ require "graphql/unauthorized_error"
 require "graphql/unauthorized_field_error"
 require "graphql/load_application_object_failed_error"
 require "graphql/deprecation"
+
+require "graphql/graphiql"

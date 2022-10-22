@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+  <head>
+    <title><%= @config.title %></title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+
+    <% if @config.load_from_cdn == true %>
+      <link
+          rel="stylesheet"
+          href="https://unpkg.com/graphiql@2.0.9/graphiql.min.css"
+          crossorigin="anonymous"
+          integrity="sha384-XpOnKjiWAvyzsivBjAzLCzUowtLEEWvXTAsosLibfiPiO9r+dXjoftHHK8XqhEG7" />
+    <% else %>
+      <link rel="stylesheet" href="<%= root_path %>/assets/stylesheets/graphiql@2.0.9.min.css" />
+    <% end %>
+
+    <link rel="stylesheet" href="<%= root_path %>/assets/stylesheets/index.css" />
+  </head>
+  <body>
+    <div id="graphiql"
+      data-graphql-endpoint="<%= graphql_endpoint %>"
+      data-headers=<%= @config.headers.to_json %>
+      data-is-headers-editor-enabled="<%= @config.is_headers_editor_enabled %>"
+      data-default-query="<%= @config.default_query %>"
+      data-logo-text="<%= @config.logo_text %>"
+    >
+        <div class="graphiql-loading graphiql-container">
+            <div class="loader"></div>
+        </div>
+    </div>
+
+    <% if @config.load_from_cdn == true %>
+      <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"
+              crossorigin="anonymous"
+              integrity="sha384-7Er69WnAl0+tY5MWEvnQzWHeDFjgHSnlQfDDeWUvv8qlRXtzaF/pNo18Q2aoZNiO">
+      </script>
+      <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"
+              crossorigin="anonymous"
+              integriy="sha384-vj2XpC1SOa8PHrb0YlBqKN7CQzJYO72jz4CkDQ+ePL1pwOV4+dn05rPrbLGUuvCv">
+      </script>
+      <script src="https://unpkg.com/graphiql@2.0.9/graphiql.min.js"
+              crossorigin="anonymous"
+              integrity="sha384-a1MH5bta7pgSNWs+XCzgfKJmBHATnwxXQIEHkPbpI6tsnV7QTUv0hMAWEynBNpcr">
+      </script>
+    <% else %>
+      <script type="text/javascript" src="<%= root_path %>/assets/javascripts/react@17.0.2.production.min.js"></script>
+      <script type="text/javascript" src="<%= root_path %>/assets/javascripts/react-dom@17.0.2.production.min.js"></script>
+      <script type="text/javascript" src="<%= root_path %>/assets/javascripts/graphiql@2.0.9.min.js"></script>
+    <% end %>
+    
+    <script type="text/javascript" src="<%= root_path %>/assets/javascripts/index.js"></script>
+  </body>
+</html>
